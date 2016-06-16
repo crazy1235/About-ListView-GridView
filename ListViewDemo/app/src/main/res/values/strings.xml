@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ListViewDemo</string>
+
+    <string name="menu_add_item">add</string>
+    <string name="menu_delete_item">delete</string>
+
+    <string name="menu_array_adapter">ArrayAdapter</string>
+
+
+</resources>
