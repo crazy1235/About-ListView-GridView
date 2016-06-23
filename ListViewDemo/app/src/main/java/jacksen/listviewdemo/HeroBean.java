@@ -1,30 +1,33 @@
 package jacksen.listviewdemo;
 
+import android.support.annotation.IdRes;
+
 /**
  * Created by Admin on 2016/6/15.
  */
 
 public class HeroBean {
 
-    private String imageName;
+    @IdRes
+    private int imgRes;
     private String name;
     private String introduce;
 
     public HeroBean() {
     }
 
-    public HeroBean(String imageName, String name, String introduce) {
-        this.imageName = imageName;
+    public HeroBean(int imgRes, String name, String introduce) {
+        this.imgRes = imgRes;
         this.introduce = introduce;
         this.name = name;
     }
 
-    public String getImageName() {
-        return imageName;
+    public int getImgRes() {
+        return imgRes;
     }
 
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
+    public void setImgRes(int imgRes) {
+        this.imgRes = imgRes;
     }
 
     public String getName() {

@@ -5,6 +5,8 @@
     <string name="menu_delete_item">delete</string>
 
     <string name="menu_array_adapter">ArrayAdapter</string>
+    <string name="menu_simple_adapter">SimpleAdapter</string>
+    <string name="menu_custom_adapter">CustomAdapter</string>
 
 
 </resources>

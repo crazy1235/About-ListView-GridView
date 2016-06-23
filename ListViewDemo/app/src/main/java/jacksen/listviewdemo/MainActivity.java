@@ -6,10 +6,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
+import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -28,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
     private List<String> list;
 
+    private List<Map<String, Object>> list2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * use ArrayAdapter
+     * 1. ArrayAdapter
      */
     private void setArrayAdapter() {
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
@@ -59,6 +63,89 @@ public class MainActivity extends AppCompatActivity {
         list.add("item15");
         arrayAdapter.addAll(list);
         listView.setAdapter(arrayAdapter);
+    }
+
+
+    private void setSimpleCursorAdapter() {
+
+    }
+
+
+    private void setSimpleAdapter() {
+        list2 = new ArrayList<>();
+        Map<String, Object> map = new HashMap<>();
+        map.put("img", R.mipmap.songjiang);
+        map.put("name", "songjiang");
+        map.put("intro", "及时雨");
+        list2.add(map);
+
+        map = new HashMap<>();
+        map.put("img", R.mipmap.likui);
+        map.put("name", "李逵");
+        map.put("intro", "黑旋风");
+        list2.add(map);
+
+        map = new HashMap<>();
+        map.put("img", R.mipmap.wuyong);
+        map.put("name", "吴用");
+        map.put("intro", "智多星");
+        list2.add(map);
+
+        map = new HashMap<>();
+        map.put("img", R.mipmap.linchong);
+        map.put("name", "林冲");
+        map.put("intro", "豹子头");
+        list2.add(map);
+
+        map = new HashMap<>();
+        map.put("img", R.mipmap.luzhishen);
+        map.put("name", "鲁智深");
+        map.put("intro", "花和尚");
+        list2.add(map);
+
+        map = new HashMap<>();
+        map.put("img", R.mipmap.lujunyi);
+        map.put("name", "卢俊义");
+        map.put("intro", "玉麒麟");
+        list2.add(map);
+
+        map = new HashMap<>();
+        map.put("img", R.mipmap.gongsunsheng);
+        map.put("name", "公孙胜");
+        map.put("intro", "入云龙");
+        list2.add(map);
+
+        map = new HashMap<>();
+        map.put("img", R.mipmap.lujunyi);
+        map.put("name", "卢俊义");
+        map.put("intro", "玉麒麟");
+        list2.add(map);
+
+        map = new HashMap<>();
+        map.put("img", R.mipmap.gongsunsheng);
+        map.put("name", "公孙胜");
+        map.put("intro", "入云龙");
+        list2.add(map);
+
+
+        SimpleAdapter simpleAdapter = new SimpleAdapter(this, list2, R.layout.item_linear, new String[]{"img", "name", "intro"},
+                new int[]{R.id.item_image, R.id.item_name_tv, R.id.item_intro_tv});
+
+        listView.setAdapter(simpleAdapter);
+
+    }
+
+    private void setCustomAdapter() {
+        List<HeroBean> list3 = new ArrayList<>();
+        list3.add(new HeroBean(R.mipmap.linchong, "林冲", "八十万禁军教头"));
+        list3.add(new HeroBean(R.mipmap.songjiang, "宋江", "孝义黑三郎"));
+        list3.add(new HeroBean(R.mipmap.likui, "李逵", "黑旋风李逵"));
+        list3.add(new HeroBean(R.mipmap.gongsunsheng, "公孙胜", "入云龙"));
+        list3.add(new HeroBean(R.mipmap.wuyong, "吴用", "智多星"));
+        list3.add(new HeroBean(R.mipmap.luzhishen, "鲁智深", "花和尚"));
+
+        HeroAdapter heroAdapter = new HeroAdapter(this, list3);
+        listView.setAdapter(heroAdapter);
     }
 
 
@@ -85,8 +172,22 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_delete_item:
                 break;
             case R.id.action_array_adapter:
-                setArrayAdapter();
-                MODE_ADAPTER = MODE_ARRAY;
+                if (MODE_ADAPTER != MODE_ARRAY) {
+                    setArrayAdapter();
+                    MODE_ADAPTER = MODE_ARRAY;
+                }
+                break;
+            case R.id.action_simple_adapter:
+                if (MODE_ADAPTER != MODE_SIMPLE) {
+                    setSimpleAdapter();
+                    MODE_ADAPTER = MODE_SIMPLE;
+                }
+                break;
+            case R.id.action_custom_adapter:
+                if (MODE_ADAPTER != MODE_CUSTOM){
+                    setCustomAdapter();
+                    MODE_ADAPTER = MODE_CUSTOM;
+                }
                 break;
             default:
                 break;

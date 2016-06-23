@@ -12,12 +12,13 @@
         android:id="@+id/list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:overScrollFooter="@mipmap/songjiang"
-        android:overScrollHeader="@mipmap/ic_launcher"
-        android:scrollbarStyle="outsideOverlay"
-        android:scrollbarThumbVertical="@mipmap/ic_launcher"
-        android:overScrollMode="always"
         android:drawSelectorOnTop="true"
-        android:verticalScrollbarPosition="left" />
+        android:overScrollFooter="@mipmap/android_listview"
+        android:overScrollHeader="@mipmap/ic_launcher"
+        android:overScrollMode="ifContentScrolls"
+        android:scrollbarSize="@dimen/height_scrollbar"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbarThumbVertical="@drawable/scrollbar_vertical_thumb"
+        android:verticalScrollbarPosition="right" />
 
 </LinearLayout>

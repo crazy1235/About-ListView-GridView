@@ -22,4 +22,17 @@
         android:orderInCategory="3"
         android:title="@string/menu_array_adapter"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_simple_adapter"
+        android:orderInCategory="4"
+        android:title="@string/menu_simple_adapter"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_custom_adapter"
+        android:orderInCategory="5"
+        android:title="@string/menu_custom_adapter"
+        app:showAsAction="never" />
+
 </menu>
