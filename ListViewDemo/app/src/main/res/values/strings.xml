@@ -9,4 +9,7 @@
     <string name="menu_custom_adapter">CustomAdapter</string>
 
 
+    <string name="menu_auto_hide_actionbar">AutoHideAb</string>
+
+
 </resources>

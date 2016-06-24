@@ -1,5 +1,7 @@
 package jacksen.listviewdemo;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -12,6 +14,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static jacksen.listviewdemo.DBHelper.TABLE_HERO;
 
 /**
  *
@@ -32,12 +36,22 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Map<String, Object>> list2;
 
+    private SQLiteDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listView = (ListView) findViewById(R.id.list_view);
+
+        DBHelper dbHelper = new DBHelper(this);
+        database = dbHelper.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("name", "宋江");
+        contentValues.put("intro", "孝义黑三郎");
+
+        database.insert(TABLE_HERO, null,contentValues);
     }
 
     /**
@@ -65,12 +79,16 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(arrayAdapter);
     }
 
-
+    /**
+     * 2.
+     */
     private void setSimpleCursorAdapter() {
 
     }
 
-
+    /**
+     * 3.
+     */
     private void setSimpleAdapter() {
         list2 = new ArrayList<>();
         Map<String, Object> map = new HashMap<>();
@@ -135,6 +153,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * 4.
+     */
     private void setCustomAdapter() {
         List<HeroBean> list3 = new ArrayList<>();
         list3.add(new HeroBean(R.mipmap.linchong, "林冲", "八十万禁军教头"));
@@ -147,7 +168,6 @@ public class MainActivity extends AppCompatActivity {
         HeroAdapter heroAdapter = new HeroAdapter(this, list3);
         listView.setAdapter(heroAdapter);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -184,14 +204,19 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.action_custom_adapter:
-                if (MODE_ADAPTER != MODE_CUSTOM){
+                if (MODE_ADAPTER != MODE_CUSTOM) {
                     setCustomAdapter();
                     MODE_ADAPTER = MODE_CUSTOM;
                 }
+                break;
+            case R.id.action_auto_hide_actionbar:
+
                 break;
             default:
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }
