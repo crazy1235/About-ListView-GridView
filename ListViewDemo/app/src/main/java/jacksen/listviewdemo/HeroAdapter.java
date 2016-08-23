@@ -42,8 +42,7 @@ public class HeroAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
+    public View getView(int position, View convertView, ViewGroup parent) {        ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new ViewHolder();
 
